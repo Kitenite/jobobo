@@ -8,7 +8,7 @@ export default function LandingPage() {
         <Header />
       </div>
       <div className="bg-grey grid grow place-items-center">
-        <div className="flex grow flex-col place-items-center space-y-12 ">
+        <div className="flex grow flex-col place-items-center ">
           <TagLine />
           <EmailInput />
           <div className="h-32" />

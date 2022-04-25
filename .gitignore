@@ -117,3 +117,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 yarn.lock
+
+# Credentials
+credentials.tsx
+
+# Package lock
+package-lock.json

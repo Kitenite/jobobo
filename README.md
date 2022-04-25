@@ -1,29 +1,20 @@
-# template-vite-react-ts-tailwind-v3
+# Jobobo
 
-- **template of:** vite + react + typescript
-- **tailwindcss:** v3.x
+Automatic job site
+vite + react + typescript + tailwindcss
 
 ## Started
-```bash
-yarn
-# or `npm install`
-```
+
+`npm install`
 
 ---
+
 ## Develop
-```bash
-yarn dev
-# or `npm run dev`
-```
+
+`npm run dev`
 
 ---
+
 ## Build
-```bash
-yarn build
-# or `npm run build`
-```
 
----
-<p align="center">
-<img src="./powered-by-vitawind-bright.png">
-</p>
+`npm run build`
