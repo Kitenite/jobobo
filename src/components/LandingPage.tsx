@@ -11,7 +11,7 @@ export default function LandingPage() {
         <div className="flex grow flex-col place-items-center space-y-12 ">
           <TagLine />
           <EmailInput />
-          <div className="h-32"></div>
+          <div className="h-32" />
         </div>
       </div>
     </div>
