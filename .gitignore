@@ -119,7 +119,7 @@ dist
 yarn.lock
 
 # Credentials
-credentials.tsx
+credentials.json
 
 # Package lock
 package-lock.json

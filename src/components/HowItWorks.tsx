@@ -6,7 +6,10 @@ import StepExample from "./StepExamples";
 
 export default function HowItWorks() {
   return (
-    <div className="flex h-screen max-h-screen flex-col items-center p-6">
+    <div
+      id="how-it-works"
+      className="flex h-screen max-h-screen flex-col items-center p-6"
+    >
       <StepExample
         header={"Step 1:"}
         subtitle={"Fill out your job information"}
@@ -26,7 +29,7 @@ export default function HowItWorks() {
       />
       <StepExample
         header={"Step 4:"}
-        subtitle={"We automatically apply for those positions "}
+        subtitle={"We automatically apply for those positions"}
         imgSrc={step_4}
       />
     </div>

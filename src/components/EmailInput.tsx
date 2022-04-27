@@ -8,7 +8,7 @@ export default function EmailInput() {
     if (validateEmail(email)) {
       submitEmail(email);
       alert(
-        "Thanks for signing up!\nYou'll receive an email when the product is ready."
+        "Thanks for signing up!\nWe've added your email to the signup queue."
       );
       e.target[0].value = "";
     } else {
@@ -28,8 +28,8 @@ export default function EmailInput() {
           />
           <input
             className="flex-shrink-0 rounded border-4 border-teal-500 bg-teal-500 py-1 px-2 text-sm text-white hover:border-teal-700 hover:bg-teal-700"
-            type="button"
-            value="Join waitlist"
+            type="submit"
+            value="Sign up"
           />
         </div>
       </form>
