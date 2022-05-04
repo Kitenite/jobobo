@@ -58,16 +58,27 @@ export default function PreferenceFormPage() {
   ];
 
   const [choiceItems, setChoiceItems] = useState(choiceItemsInitial);
-  const inputItems = [
-    { subtitle: "Preferred city?" },
+  const inputItemsInitial = [
     {
+      show: false,
+      subtitle: "Preferred city?",
+      placeholder: "i.e. San Jose, CA",
+    },
+    {
+      show: false,
       subtitle: "Finally, what’s the title of the position you’re looking for?",
+      placeholder: "i.e. Art administrator",
     },
   ];
+  const [inputItems, setInputItems] = useState(inputItemsInitial);
 
-  const onChangeCallback = (event: any) => {
+  const onChoiceChangeCallback = (event: any) => {
+    const value = event.target.value;
     let newChoiceItems = choiceItems.slice();
-    switch (event.target.value) {
+    let newInputItems = inputItems.slice();
+
+    // Should use index match to reduce this logic. But I'm tired...
+    switch (value) {
       case "Full-time":
         newChoiceItems[0].selected = 0;
         newChoiceItems[1].show = true;
@@ -75,13 +86,50 @@ export default function PreferenceFormPage() {
       case "Part-time":
         newChoiceItems[0].selected = 1;
         newChoiceItems[1].show = false;
+        newChoiceItems[2].show = true;
         break;
       case "Internship":
         newChoiceItems[0].selected = 2;
         newChoiceItems[1].show = false;
+        newChoiceItems[2].show = true;
+        break;
+
+      case "Entry level":
+        newChoiceItems[1].selected = 0;
+        newChoiceItems[2].show = true;
+        break;
+      case "Mid career":
+        newChoiceItems[1].selected = 1;
+        newChoiceItems[2].show = true;
+        break;
+      case "Executive":
+        newChoiceItems[1].selected = 2;
+        newChoiceItems[2].show = true;
+        break;
+
+      case "Specific location":
+        newInputItems[0].show = true;
+        newChoiceItems[2].selected = 0;
+        break;
+      case "Remote only":
+        newInputItems[0].show = false;
+        newInputItems[1].show = true;
+        newChoiceItems[2].selected = 1;
+        break;
+      case "No preference":
+        newInputItems[0].show = false;
+        newInputItems[1].show = true;
+        newChoiceItems[2].selected = 2;
         break;
     }
+    setInputItems(newInputItems);
     setChoiceItems(newChoiceItems);
+  };
+
+  const onInputChangeCallback = (event: any) => {
+    let newInputItems = inputItems.slice();
+    newInputItems[1].show = event.target.value != "";
+    setInputItems(newInputItems);
   };
 
   return (
@@ -91,7 +139,7 @@ export default function PreferenceFormPage() {
       <div className="space-y-20">
         {choiceItems.map((item) => {
           return (
-            <Form onChangeCallback={onChangeCallback}>
+            <Form onChangeCallback={onChoiceChangeCallback}>
               <div
                 className="space-y-10"
                 style={{ display: item.show ? "block" : "none" }}
@@ -104,14 +152,20 @@ export default function PreferenceFormPage() {
         })}
         {inputItems.map((item) => {
           return (
-            <Form>
-              <Subtitle content={item.subtitle} />
-              <div className="flex w-full justify-center p-10">
-                <div className="w-1/3 min-w-[25rem] ">
-                  <FormInput required={true} type={"text"} placeholder={""} />
+            <div style={{ display: item.show ? "block" : "none" }}>
+              <Form onChangeCallback={onInputChangeCallback}>
+                <Subtitle content={item.subtitle} />
+                <div className="flex w-full justify-center p-10">
+                  <div className="w-1/3 min-w-[25rem] ">
+                    <FormInput
+                      required={true}
+                      type={"text"}
+                      placeholder={item.placeholder}
+                    />
+                  </div>
                 </div>
-              </div>
-            </Form>
+              </Form>
+            </div>
           );
         })}
       </div>

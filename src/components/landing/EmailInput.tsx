@@ -3,7 +3,6 @@ import { validateEmail, submitEmail } from "../../utils/email-helpers";
 export default function EmailInput() {
   const onSubmit = (e: any) => {
     e.preventDefault();
-    console.log();
     const email = e.target[0].value;
     if (validateEmail(email)) {
       submitEmail(email);
