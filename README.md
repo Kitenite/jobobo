@@ -1,20 +1,22 @@
-# Jobobo
+# Description:
 
-Automatic job site
-vite + react + typescript + tailwindcss
+A webapp for automating your job application process. Very much a work in progress.
 
-## Started
+## How to use
 
-`npm install`
+Not meant to be ran outside of my environment. You'll have to use your own firebase credentials.
 
----
+- [Landing page](https://jobs.madebykiet.com/)
+- [Design doc](https://www.figma.com/file/2SIR35uhr3axARhBKnRFpq/Jobobo?node-id=0%3A1)
 
-## Develop
+But if you really want to, you can run it with typical node.js commands:
 
-`npm run dev`
+```
+npm install
+npm run dev
+npm run build
+```
 
----
+## Made with
 
-## Build
-
-`npm run build`
+`vite` + `react` + `typescript` + `tailwindcss` + `firebase`
