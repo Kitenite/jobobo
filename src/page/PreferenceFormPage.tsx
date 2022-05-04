@@ -109,6 +109,7 @@ export default function PreferenceFormPage() {
 
       case "Specific location":
         newInputItems[0].show = true;
+        newInputItems[1].show = false;
         newChoiceItems[2].selected = 0;
         break;
       case "Remote only":
