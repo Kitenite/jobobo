@@ -1,7 +1,7 @@
 import Header from "./Header";
 import EmailInput from "./EmailInput";
 import TagLine from "./TagLine";
-export default function LandingPage() {
+export default function SignUpScreen() {
   return (
     <div className="flex h-screen max-h-screen flex-col">
       <div className="">

@@ -1,4 +1,4 @@
-import { validateEmail, submitEmail } from "../utils/email-helpers";
+import { validateEmail, submitEmail } from "../../utils/email-helpers";
 
 export default function EmailInput() {
   const onSubmit = (e: any) => {
@@ -8,7 +8,7 @@ export default function EmailInput() {
     if (validateEmail(email)) {
       submitEmail(email);
       alert(
-        "Thanks for signing up!\nWe've added your email to the signup queue."
+        "Thanks for signing up!\nWe've added your email to the early access queue."
       );
       e.target[0].value = "";
     } else {

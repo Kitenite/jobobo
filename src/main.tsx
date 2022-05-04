@@ -1,7 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Apply from "./routes/apply";
+import Landing from "./routes/landing";
+
+// Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Firebase
 import { initializeApp } from "firebase/app";
@@ -16,7 +20,12 @@ const analytics = getAnalytics(app);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="apply" element={<Apply />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

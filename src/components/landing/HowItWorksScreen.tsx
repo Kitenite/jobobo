@@ -1,7 +1,7 @@
-import step_1 from "../assets/step_1.png";
-import step_2 from "../assets/step_2.png";
-import step_3 from "../assets/step_3.png";
-import step_4 from "../assets/step_4.png";
+import step_1 from "../../assets/step_1.png";
+import step_2 from "../../assets/step_2.png";
+import step_3 from "../../assets/step_3.png";
+import step_4 from "../../assets/step_4.png";
 import StepExample from "./StepExamples";
 
 export default function HowItWorks() {
@@ -17,7 +17,7 @@ export default function HowItWorks() {
       />
       <StepExample
         header={"Step 2:"}
-        subtitle={"We look across major job sites for the perfect match"}
+        subtitle={"We look across major job sites for the perfect matches"}
         imgSrc={step_2}
       />
       <StepExample
