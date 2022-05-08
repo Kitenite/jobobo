@@ -3,10 +3,10 @@ import Subtitle from "../components/forms/Subtitle";
 import Form from "../components/forms/Form";
 import FormChoices from "../components/forms/FormChoices";
 import FormFooter from "../components/forms/FormFooter";
-import FormInput from "../components/forms/FormInput";
+import FormUploadFile from "../components/forms/FormUploadFile";
 import { useState } from "react";
 
-export default function PreferenceFormPage() {
+export default function ApplicationFormnPage() {
   let buttons = {
     back: {
       disabled: false,
@@ -21,38 +21,21 @@ export default function PreferenceFormPage() {
   const choiceItemsInitial = [
     {
       show: true,
-      subtitle: "What kind of position are you looking for?",
+      subtitle:
+        "Let’s get the best information we can to get you that next job",
       choices: [
         {
-          label: "Full-time",
+          label: "Use information from my resume",
           img: "",
         },
         {
-          label: "Part-time",
+          label: "Take a guided application",
           img: "",
         },
         {
-          label: "Internship",
+          label: "Get help from an expert",
           img: "",
         },
-      ],
-    },
-    {
-      show: false,
-      subtitle: "What career level are you aiming for?",
-      choices: [
-        { label: "Entry level", img: "" },
-        { label: "Mid career", img: "" },
-        { label: "Executive", img: "" },
-      ],
-    },
-    {
-      show: false,
-      subtitle: "Where would you prefer to work?",
-      choices: [
-        { label: "Specific location", img: "" },
-        { label: "Remote only", img: "" },
-        { label: "No preference", img: "" },
       ],
     },
   ];
@@ -61,7 +44,7 @@ export default function PreferenceFormPage() {
   const inputItemsInitial = [
     {
       show: false,
-      subtitle: "Preferred city?",
+      subtitle: "Attach your resume below",
       placeholder: "i.e. San Jose, CA",
     },
     {
@@ -77,51 +60,20 @@ export default function PreferenceFormPage() {
     let newChoiceItems = choiceItems.slice();
     let newInputItems = inputItems.slice();
 
+    console.log(choiceItems[0].choices);
     // Should use index match to reduce this logic. But I'm tired...
     switch (value) {
-      case "Full-time":
+      case choiceItems[0].choices[0].label:
         newChoiceItems[0].selected = 0;
-        newChoiceItems[1].show = true;
-        newChoiceItems[2].show = false;
+        inputItems[0].show = true;
         break;
-      case "Part-time":
+      case choiceItems[0].choices[1].label:
         newChoiceItems[0].selected = 1;
-        newChoiceItems[1].show = false;
-        newChoiceItems[2].show = true;
+        inputItems[0].show = false;
         break;
-      case "Internship":
+      case choiceItems[0].choices[2].label:
         newChoiceItems[0].selected = 2;
-        newChoiceItems[1].show = false;
-        newChoiceItems[2].show = true;
-        break;
-
-      case "Entry level":
-        newChoiceItems[1].selected = 0;
-        newChoiceItems[2].show = true;
-        break;
-      case "Mid career":
-        newChoiceItems[1].selected = 1;
-        newChoiceItems[2].show = true;
-        break;
-      case "Executive":
-        newChoiceItems[1].selected = 2;
-        newChoiceItems[2].show = true;
-        break;
-
-      case "Specific location":
-        newInputItems[0].show = true;
-        newInputItems[1].show = false;
-        newChoiceItems[2].selected = 0;
-        break;
-      case "Remote only":
-        newInputItems[0].show = false;
-        newInputItems[1].show = true;
-        newChoiceItems[2].selected = 1;
-        break;
-      case "No preference":
-        newInputItems[0].show = false;
-        newInputItems[1].show = true;
-        newChoiceItems[2].selected = 2;
+        inputItems[0].show = false;
         break;
     }
     setInputItems(newInputItems);
@@ -136,7 +88,7 @@ export default function PreferenceFormPage() {
 
   return (
     <div className="h-screen w-full space-y-5 p-6 text-center	">
-      <Title content={"Now let’s talk about your future job"} />
+      <Title content={"Your application information"} />
 
       <div className="space-y-20">
         {choiceItems.map((item) => {
@@ -159,7 +111,7 @@ export default function PreferenceFormPage() {
                 <Subtitle content={item.subtitle} />
                 <div className="flex w-full justify-center p-10">
                   <div className="w-1/3 min-w-[25rem] ">
-                    <FormInput
+                    <FormUploadFile
                       required={true}
                       type={"text"}
                       placeholder={item.placeholder}
