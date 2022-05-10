@@ -2,21 +2,10 @@ import Title from "../components/forms/Title";
 import Subtitle from "../components/forms/Subtitle";
 import Form from "../components/forms/Form";
 import FormInput from "../components/forms/FormInput";
-import FormFooter from "../components/forms/FormFooter";
 
-export default function PersonalFormPage() {
-  let buttons = {
-    back: {
-      disabled: false,
-      hidden: false,
-    },
-    next: {
-      disabled: false,
-      hidden: false,
-    },
-  };
+export default function PersonalFormPage(props: any) {
   return (
-    <div className="h-screen w-full space-y-5 p-6">
+    <div className="h-full w-full space-y-5 p-6">
       <Title content={"Let’s get started by getting to know you"} />
       <Subtitle
         content={
@@ -57,7 +46,6 @@ export default function PersonalFormPage() {
           </div>
         </Form>
       </div>
-      <FormFooter buttons={buttons} />
     </div>
   );
 }

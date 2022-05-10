@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import Apply from "./routes/apply";
 import Landing from "./routes/landing";
+import PersonalFormPage from "./page/PersonalFormPage";
+import PreferenceFormPage from "./page/PreferenceFormPage";
+import ApplicationFormPage from "./page/ApplicationFormPage";
 
 // Router
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -23,7 +26,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="apply" element={<Apply />} />
+        <Route path="apply/*" element={<Apply />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

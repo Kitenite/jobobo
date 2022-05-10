@@ -2,22 +2,10 @@ import Title from "../components/forms/Title";
 import Subtitle from "../components/forms/Subtitle";
 import Form from "../components/forms/Form";
 import FormChoices from "../components/forms/FormChoices";
-import FormFooter from "../components/forms/FormFooter";
 import FormUploadFile from "../components/forms/FormUploadFile";
 import { useState } from "react";
 
-export default function ApplicationFormnPage() {
-  let buttons = {
-    back: {
-      disabled: false,
-      hidden: false,
-    },
-    next: {
-      disabled: false,
-      hidden: false,
-    },
-  };
-
+export default function ApplicationFormPage() {
   const choiceItemsInitial = [
     {
       show: true,
@@ -60,7 +48,6 @@ export default function ApplicationFormnPage() {
     let newChoiceItems = choiceItems.slice();
     let newInputItems = inputItems.slice();
 
-    console.log(choiceItems[0].choices);
     // Should use index match to reduce this logic. But I'm tired...
     switch (value) {
       case choiceItems[0].choices[0].label:
@@ -87,7 +74,7 @@ export default function ApplicationFormnPage() {
   };
 
   return (
-    <div className="h-screen w-full space-y-5 p-6 text-center	">
+    <div className="h-full w-full space-y-5 p-6 text-center	">
       <Title content={"Your application information"} />
 
       <div className="space-y-20">
@@ -123,7 +110,6 @@ export default function ApplicationFormnPage() {
           );
         })}
       </div>
-      <FormFooter buttons={buttons} />
     </div>
   );
 }

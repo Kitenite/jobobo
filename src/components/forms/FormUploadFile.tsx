@@ -53,11 +53,11 @@ export default function FormUploadFile(props: any) {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               />
             </svg>
@@ -81,6 +81,7 @@ export default function FormUploadFile(props: any) {
     e.preventDefault();
     e.stopPropagation();
     console.log("Upload file: ");
+    console.log(attachedFile);
   };
 
   const clearFiles = (e) => {
@@ -91,7 +92,6 @@ export default function FormUploadFile(props: any) {
   };
 
   const updateAttachedFile = (file) => {
-    console.log(file.name);
     setAttachedFile(file);
   };
 
@@ -117,11 +117,5 @@ export default function FormUploadFile(props: any) {
 
   return (
     <div>{attachedFile ? fileAttachedComponent : fileBrowserComponent}</div>
-
-    // Remove
-    // <div>
-    //   {fileBrowserComponent}
-    //   {fileAttachedComponent}
-    // </div>
   );
 }

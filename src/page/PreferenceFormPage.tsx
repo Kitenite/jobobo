@@ -2,22 +2,11 @@ import Title from "../components/forms/Title";
 import Subtitle from "../components/forms/Subtitle";
 import Form from "../components/forms/Form";
 import FormChoices from "../components/forms/FormChoices";
-import FormFooter from "../components/forms/FormFooter";
 import FormInput from "../components/forms/FormInput";
 import { useState } from "react";
 
-export default function PreferenceFormPage() {
-  let buttons = {
-    back: {
-      disabled: false,
-      hidden: false,
-    },
-    next: {
-      disabled: false,
-      hidden: false,
-    },
-  };
-
+export default function PreferenceFormPage(props: any) {
+  console.log(props);
   const choiceItemsInitial = [
     {
       show: true,
@@ -135,9 +124,8 @@ export default function PreferenceFormPage() {
   };
 
   return (
-    <div className="h-screen w-full space-y-5 p-6 text-center	">
+    <div className="h-full w-full space-y-5 p-6 text-center	">
       <Title content={"Now let’s talk about your future job"} />
-
       <div className="space-y-20">
         {choiceItems.map((item) => {
           return (
@@ -171,7 +159,6 @@ export default function PreferenceFormPage() {
           );
         })}
       </div>
-      <FormFooter buttons={buttons} />
     </div>
   );
 }

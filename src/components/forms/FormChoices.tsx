@@ -7,6 +7,10 @@ export default function FormChoices(props: {
   const genID = `${uuidv4()}`;
   const renderChoices = props.choices.map((choice: any, index: number) => {
     const choiceKey = `${uuidv4()}`;
+    const onInputChanged = (e) => {
+      e.preventDefault();
+      e.stopPropogation();
+    };
     return (
       <div className="form-check " key={choiceKey}>
         <label className="flex cursor-pointer flex-col justify-center	">
@@ -16,6 +20,7 @@ export default function FormChoices(props: {
             name={genID}
             value={choice.label}
             checked={props.selected == index}
+            onChange={onInputChanged}
           />
           <span
             className="flex h-40 w-40 flex-col justify-center rounded-md border-2 peer-checked:border-8 peer-checked:border-transparent peer-checked:text-lg peer-checked:font-bold peer-checked:ring-2 peer-checked:ring-green-400"

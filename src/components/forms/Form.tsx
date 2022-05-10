@@ -1,7 +1,5 @@
 export default function Form(props: { onChangeCallback: any; children: any }) {
-  const onChangeCallback = (event: any) => {
-    console.log(event.target.value);
-  };
+  const onChangeCallback = (event: any) => {};
   return (
     <form
       className=""
