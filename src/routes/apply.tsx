@@ -6,14 +6,35 @@ import ApplicationFormPage from "../page/ApplicationFormPage";
 import { useState } from "react";
 
 export default function Apply() {
-  const handleFilled = (e) => {
-    console.log("Filled!");
+  const handlePersonalFormFilled = () => {
+    const inputs = document.querySelectorAll("input");
+    const validInputs = Array.from(inputs).filter(
+      (input) => input.value !== ""
+    );
+    const allFilled = validInputs.length == inputs.length;
+    if (allFilled) {
+      enableNext(0);
+    }
+  };
+
+  const handlePreferenceFormFilled = (disabled = false) => {
+    enableNext(1, disabled);
+  };
+
+  const handleApplicationFormFilled = (disabled = false) => {
+    enableNext(2, disabled);
+  };
+
+  const enableNext = (index: number, disabled = false) => {
+    let newLinks = links.slice();
+    newLinks[index].buttons.next.disabled = disabled;
+    setLinks(newLinks);
   };
 
   const linksInital = [
     {
       path: "personal",
-      element: <PersonalFormPage handleFilled={handleFilled} />,
+      element: <PersonalFormPage handleFilled={handlePersonalFormFilled} />,
       isActive: false,
       isFilled: false,
       buttons: {
@@ -26,7 +47,7 @@ export default function Apply() {
     },
     {
       path: "preference",
-      element: <PreferenceFormPage handleFilled={handleFilled} />,
+      element: <PreferenceFormPage handleFilled={handlePreferenceFormFilled} />,
       isActive: false,
       isFilled: false,
       buttons: {
@@ -42,7 +63,9 @@ export default function Apply() {
     },
     {
       path: "application",
-      element: <ApplicationFormPage handleFilled={handleFilled} />,
+      element: (
+        <ApplicationFormPage handleFilled={handleApplicationFormFilled} />
+      ),
       isActive: false,
       isFilled: false,
       buttons: {

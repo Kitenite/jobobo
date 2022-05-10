@@ -3,7 +3,7 @@ import Subtitle from "../components/forms/Subtitle";
 import Form from "../components/forms/Form";
 import FormInput from "../components/forms/FormInput";
 
-export default function PersonalFormPage(props: { handleFilled: any }) {
+export default function PersonalFormPage(props: { handleFilled?: any }) {
   return (
     <div className="h-full w-full space-y-5 p-6">
       <Title content={"Let’s get started by getting to know you"} />
@@ -13,7 +13,7 @@ export default function PersonalFormPage(props: { handleFilled: any }) {
         }
       />
       <div className="">
-        <Form>
+        <Form onChangeCallback={props.handleFilled}>
           <div className="grid grid-cols-2 space-x-5">
             <div className="">
               <FormInput

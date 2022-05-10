@@ -118,8 +118,20 @@ export default function PreferenceFormPage(props: { handleFilled: any }) {
 
   const onInputChangeCallback = (event: any) => {
     let newInputItems = inputItems.slice();
-    newInputItems[1].show = event.target.value != "";
-    setInputItems(newInputItems);
+    if (newInputItems[1].show == false) {
+      newInputItems[1].show = event.target.value != "";
+      setInputItems(newInputItems);
+    }
+
+    const inputs = document.querySelectorAll("input");
+    const validInputs = Array.from(inputs).filter(
+      (input) => input.value !== ""
+    );
+    if (newInputItems[0].show) {
+      props.handleFilled(!(validInputs.length == inputs.length));
+    } else {
+      props.handleFilled(!(validInputs.length >= 1));
+    }
   };
 
   return (

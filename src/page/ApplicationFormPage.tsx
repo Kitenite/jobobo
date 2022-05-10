@@ -5,7 +5,7 @@ import FormChoices from "../components/forms/FormChoices";
 import FormUploadFile from "../components/forms/FormUploadFile";
 import { useState } from "react";
 
-export default function ApplicationFormPage(props: { handleFilled: any }) {
+export default function ApplicationFormPage(props: { handleFilled?: any }) {
   const choiceItemsInitial = [
     {
       show: true,
@@ -69,7 +69,9 @@ export default function ApplicationFormPage(props: { handleFilled: any }) {
 
   const onInputChangeCallback = (event: any) => {
     let newInputItems = inputItems.slice();
-    newInputItems[1].show = event.target.value != "";
+    const allFilled = event.target.value != "";
+    newInputItems[1].show = allFilled;
+    props.handleFilled(!allFilled);
     setInputItems(newInputItems);
   };
 
