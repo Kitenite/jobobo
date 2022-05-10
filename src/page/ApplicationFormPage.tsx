@@ -5,7 +5,7 @@ import FormChoices from "../components/forms/FormChoices";
 import FormUploadFile from "../components/forms/FormUploadFile";
 import { useState } from "react";
 
-export default function ApplicationFormPage() {
+export default function ApplicationFormPage(props: { handleFilled: any }) {
   const choiceItemsInitial = [
     {
       show: true,
@@ -78,9 +78,9 @@ export default function ApplicationFormPage() {
       <Title content={"Your application information"} />
 
       <div className="space-y-20">
-        {choiceItems.map((item) => {
+        {choiceItems.map((item, index) => {
           return (
-            <Form onChangeCallback={onChoiceChangeCallback}>
+            <Form key={index} onChangeCallback={onChoiceChangeCallback}>
               <div
                 className="space-y-10"
                 style={{ display: item.show ? "block" : "none" }}
@@ -91,9 +91,9 @@ export default function ApplicationFormPage() {
             </Form>
           );
         })}
-        {inputItems.map((item) => {
+        {inputItems.map((item, index) => {
           return (
-            <div style={{ display: item.show ? "block" : "none" }}>
+            <div key={index} style={{ display: item.show ? "block" : "none" }}>
               <Form onChangeCallback={onInputChangeCallback}>
                 <Subtitle content={item.subtitle} />
                 <div className="flex w-full justify-center p-10">

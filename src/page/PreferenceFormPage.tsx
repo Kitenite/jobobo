@@ -5,8 +5,7 @@ import FormChoices from "../components/forms/FormChoices";
 import FormInput from "../components/forms/FormInput";
 import { useState } from "react";
 
-export default function PreferenceFormPage(props: any) {
-  console.log(props);
+export default function PreferenceFormPage(props: { handleFilled: any }) {
   const choiceItemsInitial = [
     {
       show: true,
@@ -127,9 +126,9 @@ export default function PreferenceFormPage(props: any) {
     <div className="h-full w-full space-y-5 p-6 text-center	">
       <Title content={"Now let’s talk about your future job"} />
       <div className="space-y-20">
-        {choiceItems.map((item) => {
+        {choiceItems.map((item, index) => {
           return (
-            <Form onChangeCallback={onChoiceChangeCallback}>
+            <Form key={index} onChangeCallback={onChoiceChangeCallback}>
               <div
                 className="space-y-10"
                 style={{ display: item.show ? "block" : "none" }}
@@ -140,9 +139,9 @@ export default function PreferenceFormPage(props: any) {
             </Form>
           );
         })}
-        {inputItems.map((item) => {
+        {inputItems.map((item, index) => {
           return (
-            <div style={{ display: item.show ? "block" : "none" }}>
+            <div key={index} style={{ display: item.show ? "block" : "none" }}>
               <Form onChangeCallback={onInputChangeCallback}>
                 <Subtitle content={item.subtitle} />
                 <div className="flex w-full justify-center p-10">

@@ -9,7 +9,6 @@ export default function FormChoices(props: {
     const choiceKey = `${uuidv4()}`;
     const onInputChanged = (e) => {
       e.preventDefault();
-      e.stopPropogation();
     };
     return (
       <div className="form-check " key={choiceKey}>
